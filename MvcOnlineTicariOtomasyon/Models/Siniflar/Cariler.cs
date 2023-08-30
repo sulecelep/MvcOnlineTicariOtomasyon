@@ -7,22 +7,22 @@ using System.Web;
 
 namespace MvcOnlineTicariOtomasyon.Models.Siniflar
 {
-    public class Cari
+    public class Cariler
     {
         [Key]
-        public int Cariid { get; set; }
+        public int Carilerid { get; set; }
         [Column(TypeName = "Varchar")]
         [StringLength(30)]
-        public string CariAd { get; set; }
+        public string CarilerAd { get; set; }
         [Column(TypeName = "Varchar")]
         [StringLength(30)]
-        public string CariSoyad { get; set; }
+        public string CarilerSoyad { get; set; }
         [Column(TypeName = "Varchar")]
         [StringLength(15)]
-        public string CariSehir { get; set; }
+        public string CarilerSehir { get; set; }
         [Column(TypeName = "Varchar")]
         [StringLength(50)]
-        public string CariMail { get; set; }
-        public SatisHareket SatisHareket { get; set; }
+        public string CarilerMail { get; set; }
+        public ICollection<SatisHareket> SatisHarekets { get; set; }
     }
 }

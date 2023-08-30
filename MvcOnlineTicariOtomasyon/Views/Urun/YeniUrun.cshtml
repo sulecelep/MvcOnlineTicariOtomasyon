@@ -1,0 +1,41 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Urun
+
+@{
+    ViewBag.Title = "YeniUrun";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h3>Ürün Ekleme Sayfası</h3>
+<br />
+<form class="form-group" method="post">
+    @Html.Label("Ürün Adı")
+    @Html.TextBoxFor(x => x.UrunAd, new { @class = "form-control" })
+    <br />
+    @Html.Label("Marka")
+    @Html.TextBoxFor(x => x.Marka, new { @class = "form-control" })
+    <br />
+    @Html.Label("Stok")
+    @Html.TextBoxFor(x => x.Stok, new { @class = "form-control" })
+    <br />
+    @Html.Label("Alış Fiyat")
+    @Html.TextBoxFor(x => x.AlisFiyat, new { @class = "form-control" })
+    <br />
+    @Html.Label("Satış Fiyat")
+    @Html.TextBoxFor(x => x.SatisFiyat, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Kategori Seç")
+    @Html.DropDownListFor(x => x.Kategoriid, (List<SelectListItem>)ViewBag.kategoriList, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Ürün Görseli")
+    @Html.TextBoxFor(x => x.UrunGorsel, new { @class = "form-control" })
+    <br />
+    @Html.Label("Durum")
+    @Html.DropDownListFor(x => x.Durum, (List<SelectListItem>)ViewBag.durumList, new { @class = "form-control" })
+    <br />
+    <button type="submit" class="btn btn-primary">Ekle</button>
+</form>
+
+
