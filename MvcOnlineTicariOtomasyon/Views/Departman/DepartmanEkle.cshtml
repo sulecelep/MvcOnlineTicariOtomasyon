@@ -1,0 +1,16 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Departman
+@{
+    ViewBag.Title = "DepartmanEkle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h3>Departman Ekleme Sayfası</h3>
+<br />
+<form class="form-group" method="post">
+    @Html.Label("Departman Adı")
+    @Html.TextBoxFor(x => x.DepartmanAd, new { @class = "form-control" })
+    <br />
+    <button type="submit" class="btn btn-primary">Ekle</button>
+</form>
+

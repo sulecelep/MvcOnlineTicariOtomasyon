@@ -14,9 +14,12 @@ namespace MvcOnlineTicariOtomasyon.Models.Siniflar
         public int Adet { get; set; }
         public decimal Fiyat { get; set; }
         public decimal ToplamTutar { get; set; }
-        public Urun Urun { get; set; }
-        public Cariler Cariler { get; set; }
-        public Personel Personel { get; set; }
+        public int Urunid { get; set; }
+        public virtual Urun Urun { get; set; }
+        public int Carilerid { get; set; }
+        public virtual Cariler Cariler { get; set; }
+        public int Personelid { get; set; }
+        public virtual Personel Personel { get; set; }
 
     }
 }
