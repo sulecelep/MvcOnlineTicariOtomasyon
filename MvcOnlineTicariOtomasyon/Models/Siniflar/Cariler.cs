@@ -11,18 +11,25 @@ namespace MvcOnlineTicariOtomasyon.Models.Siniflar
     {
         [Key]
         public int Carilerid { get; set; }
+
         [Column(TypeName = "Varchar")]
-        [StringLength(30)]
+        [StringLength(30,ErrorMessage ="En fazla 30 karakter girişi yapabilirsiniz")]
         public string CarilerAd { get; set; }
+        
         [Column(TypeName = "Varchar")]
         [StringLength(30)]
+        [Required(ErrorMessage ="Bu alanı boş geçemezsiniz.")]
         public string CarilerSoyad { get; set; }
+
         [Column(TypeName = "Varchar")]
         [StringLength(15)]
         public string CarilerSehir { get; set; }
+
         [Column(TypeName = "Varchar")]
         [StringLength(50)]
         public string CarilerMail { get; set; }
+
         public ICollection<SatisHareket> SatisHarekets { get; set; }
+        public bool Durum { get; set; }
     }
 }

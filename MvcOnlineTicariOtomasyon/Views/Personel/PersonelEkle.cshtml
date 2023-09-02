@@ -1,0 +1,28 @@
+﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Personel
+@{
+    ViewBag.Title = "PersonelEkle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h3>Personel Ekleme Sayfası</h3>
+<br />
+<form class="form-group" method="post">
+    @Html.Label("Personel Adı")
+    @Html.TextBoxFor(x => x.PersonelAd, new { @class = "form-control" })
+    <br />
+    @Html.Label("Personel Soyadı")
+    @Html.TextBoxFor(x => x.PersonelSoyad, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Departman Seç")
+    @Html.DropDownListFor(x => x.Departmanid, (List<SelectListItem>)ViewBag.departmanList, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Personel Görseli")
+    @Html.TextBoxFor(x => x.PersonelGorsel, new { @class = "form-control" })
+    <br />
+
+    <button type="submit" class="btn btn-primary">Ekle</button>
+</form>
+
