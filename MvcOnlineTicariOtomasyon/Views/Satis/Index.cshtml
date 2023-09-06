@@ -1,0 +1,45 @@
+﻿@model List<MvcOnlineTicariOtomasyon.Models.Siniflar.SatisHareket>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    int count = 0;
+}
+
+<table class="table table-bordered" style="margin-top:20px;">
+    <tr>
+        <th>ID</th>
+        <th>Ürün</th>
+        <th>Cari</th>
+        <th>Personel</th>
+        <th>Adet</th>
+        <th>Fiyat</th>
+        <th>Toplam</th>
+        <th>Tarih</th>
+        <th>Güncelle</th>
+        <th>Detaylar</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <td>@count</td>
+            <td>@item.Urun.UrunAd</td>
+            <td>@item.Cariler.CarilerAd @item.Cariler.CarilerSoyad</td>
+            <td>@item.Personel.PersonelAd @item.Personel.PersonelSoyad</td>
+            <td>@item.Adet</td>
+            <td>@item.Fiyat</td>
+            <td>@item.ToplamTutar</td>
+            <td>@(((DateTime)item.Tarih).ToString("dd MMM yyyy"))</td>
+            <td><a href="/Satis/SatisGuncelle/@item.SatisHareketid" class="btn btn-success">Güncelle</a></td>
+            <td><a href="/Departman/DepartmanPersonelSatis/@item.Personelid" class="btn btn-dark">Satışlar</a></td>
+
+        </tr>
+    }
+
+
+
+</table>
+<a href="/Satis/YeniSatis/" class="btn btn-primary">Yeni Satış Yap</a>
+
+
+
