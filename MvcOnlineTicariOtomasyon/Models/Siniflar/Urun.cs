@@ -11,17 +11,17 @@ namespace MvcOnlineTicariOtomasyon.Models.Siniflar
     {
         [Key]
         public int Urunid { get; set; }
-        [Column(TypeName ="Varchar")]
+        [Column(TypeName ="Nvarchar")]
         [StringLength(30)]
         public string UrunAd { get; set; }
-        [Column(TypeName = "Varchar")]
+        [Column(TypeName = "Nvarchar")]
         [StringLength(30)]
         public string Marka { get; set; }
         public short Stok { get; set; }
         public decimal AlisFiyat { get; set; }
         public decimal SatisFiyat { get; set; }
         public bool Durum { get; set; }
-        [Column(TypeName = "Varchar")]
+        [Column(TypeName = "Nvarchar")]
         [StringLength(250)]
         public string UrunGorsel { get; set; }
         public int Kategoriid { get; set; }

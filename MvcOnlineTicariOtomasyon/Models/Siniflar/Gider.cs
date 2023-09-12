@@ -11,7 +11,7 @@ namespace MvcOnlineTicariOtomasyon.Models.Siniflar
     {
         [Key]
         public int Giderid { get; set; }
-        [Column(TypeName = "Varchar")]
+        [Column(TypeName = "Nvarchar")]
         [StringLength(100)]
         public string Aciklama { get; set; }
         public DateTime Tarih { get; set; }

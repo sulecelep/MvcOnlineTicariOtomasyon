@@ -11,10 +11,10 @@ namespace MvcOnlineTicariOtomasyon.Models.Siniflar
     {
         [Key]
         public int Adminid { get; set; }
-        [Column(TypeName = "Varchar")]
+        [Column(TypeName = "Nvarchar")]
         [StringLength(10)]
         public string KullaniciAd { get; set; }
-        [Column(TypeName = "Varchar")]
+        [Column(TypeName = "Nvarchar")]
         [StringLength(10)]
         public string Sifre { get; set; }
         [Column(TypeName = "Char")]
