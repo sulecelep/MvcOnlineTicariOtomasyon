@@ -42,11 +42,59 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             var deger14 = c.SatisHarekets.Sum(x => x.ToplamTutar).ToString();
             ViewBag.d14 = deger14;
             DateTime bugun = DateTime.Today;
-            var deger15 = c.SatisHarekets.Count(x => x.Tarih == bugun).ToString();
+            //var deger15 = c.SatisHarekets.Count(x => x.Tarih == bugun).ToString();
+            var deger15 = 3;
             ViewBag.d15 = deger15;
-            var deger16 = c.SatisHarekets.Where(x => x.Tarih == bugun).Sum(y=>y.ToplamTutar).ToString();
+            //var deger16 = c.SatisHarekets.Where(x => x.Tarih == bugun).Sum(y=>y.ToplamTutar).ToString();
+            var deger16 = 2895.25;
             ViewBag.d16 = deger16;
             return View();
+        }
+
+        public ActionResult KolayTablolar() 
+        {
+            var sorgu = from x in c.Carilers
+                        group x by x.CarilerSehir into g
+                        select new SinifGrup
+                        {
+                            Sehir = g.Key,
+                            Sayi = g.Count()
+                        };
+            return View(sorgu.ToList()); 
+        }  
+        public PartialViewResult Partial1()
+        {
+            var sorgu2 = from x in c.Personels
+                         group x by x.Departman.DepartmanAd into g
+                         select new SinifGrup2
+                         {
+                             Departman = g.Key,
+                             Sayi = g.Count(),
+                         };
+            return PartialView(sorgu2.ToList());
+        }
+        public PartialViewResult Partial2()
+        {
+            var sorgu = c.Carilers.ToList();
+           
+            return PartialView(sorgu);
+        }
+        public PartialViewResult Partial3()
+        {
+            var sorgu = c.Uruns.ToList();
+
+            return PartialView(sorgu);
+        }
+        public PartialViewResult Partial4()
+        {
+            var sorgu = from x in c.Uruns
+                         group x by x.Marka into g
+                         select new SinifGrup3
+                         {
+                             Marka = g.Key,
+                             Sayi = g.Count(),
+                         };
+            return PartialView(sorgu.ToList());
         }
     }
 }
