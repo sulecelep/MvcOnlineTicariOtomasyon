@@ -11,8 +11,9 @@ namespace MvcOnlineTicariOtomasyon.Models.Siniflar
     {
         [Key]
         public int Personelid { get; set; }
-        [Column(TypeName = "Nvarchar")]
 
+        
+        [Column(TypeName = "Nvarchar")]
         [StringLength(30)]
         public string PersonelAd { get; set; }
         [Column(TypeName = "Nvarchar")]

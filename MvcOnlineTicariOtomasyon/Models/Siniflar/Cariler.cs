@@ -29,6 +29,10 @@ namespace MvcOnlineTicariOtomasyon.Models.Siniflar
         [StringLength(50)]
         public string CarilerMail { get; set; }
 
+        [Column(TypeName = "Nvarchar")]
+        [StringLength(50)]
+        public string Sifre { get; set; }
+
         public ICollection<SatisHareket> SatisHarekets { get; set; }
         public bool Durum { get; set; }
     }
