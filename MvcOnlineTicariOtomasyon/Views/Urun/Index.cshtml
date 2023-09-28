@@ -6,7 +6,13 @@
 }
 
 <br />
-<h2>Ürünler</h2>
+@using (Html.BeginForm("Index", "Urun", FormMethod.Get))
+ {
+    <p>
+        Ürün Adı: @Html.TextBox("p")
+        <input type="submit" value="Ara"/>
+    </p>
+ }
 <br />
 
 <table class="table table-bordered" style="margin-top:20px;">
@@ -18,10 +24,9 @@
         <th>Alış Fiyat</th>
         <th>Satış Fiyat</th>
         <th>Kategori Adı</th>
-        <th>Görsel</th>
-        <th>Durum</th>
         <th>Sil</th>
         <th>Güncelle</th>
+        <th>Satış Yap</th>
     </tr>
     @foreach (var item in Model)
     {
@@ -31,16 +36,15 @@
             <td>@item.UrunAd</td>
             <td>@item.Marka</td>
             <td>@item.Stok</td>
-            <td>@item.AlisFiyat</td>
-            <td>@item.SatisFiyat</td>
+            <td>@item.AlisFiyat ₺</td>
+            <td>@item.SatisFiyat ₺</td>
             <td>@item.Kategori.KategoriAd</td>
-            <td>@item.UrunGorsel</td>
-            <td>@item.Durum</td>
             <td><a href="/Urun/UrunSil/@item.Urunid" class="btn btn-danger">Sil</a></td>
             <td><a href="/Urun/UrunGuncelle/@item.Urunid" class="btn btn-success">Güncelle</a></td>
+            <td><a href="/Urun/SatisYap/@item.Urunid" class="btn btn-default" style="background-color:darkorange;">Satış Yap</a></td>
 
         </tr>
-    }
+        }
 
 
 

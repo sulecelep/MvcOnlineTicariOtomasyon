@@ -45,7 +45,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             //var deger15 = c.SatisHarekets.Count(x => x.Tarih == bugun).ToString();
             var deger15 = 3;
             ViewBag.d15 = deger15;
-            //var deger16 = c.SatisHarekets.Where(x => x.Tarih == bugun).Sum(y=>y.ToplamTutar).ToString();
+            //var deger16 = c.SatisHarekets.Where(x => x.Tarih == bugun).Sum(y=>(decimal?)y.ToplamTutar).ToString();
             var deger16 = 2895.25;
             ViewBag.d16 = deger16;
             return View();

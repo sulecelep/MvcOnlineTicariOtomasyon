@@ -1,7 +1,7 @@
 ﻿@model MvcOnlineTicariOtomasyon.Models.Siniflar.Faturalar
 
 
-{
+@{
     ViewBag.Title = "FaturaGüncelle";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
@@ -10,7 +10,9 @@
 <h3>Fatura Güncelleme Sayfası</h3>
 <br />
 <form class="form-group" method="post">
-   
+    @Html.Label("Fatura ID")
+    @Html.TextBoxFor(x => x.Faturaid, new { @class = "form-control", @disabled = "disabled" })
+    <br />
     @Html.Label("Fatura Seri No")
     @Html.TextBoxFor(x => x.FaturaSeriNo, new { @class = "form-control" })
     <br />

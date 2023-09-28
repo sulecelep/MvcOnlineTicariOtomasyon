@@ -7,7 +7,7 @@
 <br />
 <h3>Personel Ekleme Sayfası</h3>
 <br />
-<form class="form-group" method="post">
+<form class="form-group" method="post" enctype="multipart/form-data">
     @Html.Label("Personel Adı")
     @Html.TextBoxFor(x => x.PersonelAd, new { @class = "form-control" })
     <br />
@@ -20,9 +20,9 @@
     <br />
 
     @Html.Label("Personel Görseli")
-    @Html.TextBoxFor(x => x.PersonelGorsel, new { @class = "form-control" })
+    <input type="file" name="PersonelGorsel" />
+    @*@Html.TextBoxFor(x => x.PersonelGorsel, new { @class = "form-control" })*@
     <br />
-
     <button type="submit" class="btn btn-primary">Ekle</button>
 </form>
 

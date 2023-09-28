@@ -1,4 +1,6 @@
-﻿@model List<MvcOnlineTicariOtomasyon.Models.Siniflar.Kategori>
+﻿@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<MvcOnlineTicariOtomasyon.Models.Siniflar.Kategori>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
@@ -24,8 +26,7 @@
         </tr>
     }
 
-
-
 </table>
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
 <a href="/Kategori/KategoriEkle/" class="btn btn-primary">Kategori Ekle</a>
 

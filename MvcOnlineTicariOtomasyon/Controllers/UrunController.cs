@@ -11,10 +11,14 @@ namespace MvcOnlineTicariOtomasyon.Controllers
     {
         Context c =new Context();
         // GET: Urun
-        public ActionResult Index()
+        public ActionResult Index(string p)
         {
-            var urunler = c.Uruns.ToList();
-            return View(urunler);
+            var urunler = from x in c.Uruns select x;
+            if(!string.IsNullOrEmpty(p))
+            {
+                urunler=urunler.Where(y=>y.UrunAd.Contains(p));
+            }
+            return View(urunler.ToList());
         }
         [HttpGet]
         public ActionResult YeniUrun()
@@ -95,6 +99,34 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         {
             var values = c.Uruns.ToList();
             return View(values);
+        }
+        [HttpGet]
+        public ActionResult SatisYap(int id)
+        {
+
+            List<SelectListItem> personeller = (from x in c.Personels.ToList()
+                                                select new SelectListItem
+                                                {
+                                                    Text = x.PersonelAd + " " + x.PersonelSoyad,
+                                                    Value = x.Personelid.ToString()
+                                                }).ToList();
+
+
+
+            ViewBag.Personeller = personeller;
+            var urun = c.Uruns.Find(id);
+            ViewBag.urunAd = urun.UrunAd;
+            ViewBag.urunId = urun.Urunid;
+            ViewBag.urunSatisFiyat = urun.SatisFiyat;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult SatisYap(SatisHareket p)
+        {
+            p.Tarih= DateTime.Parse(DateTime.Now.ToShortDateString());
+            c.SatisHarekets.Add(p);
+            c.SaveChanges();
+            return RedirectToAction("Index","Satis");
         }
     }
 }
