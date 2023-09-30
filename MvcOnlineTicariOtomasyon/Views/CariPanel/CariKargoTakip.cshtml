@@ -1,8 +1,8 @@
 ﻿@using MvcOnlineTicariOtomasyon.Models.Siniflar
 @model List<KargoTakip>
 @{
-    ViewBag.Title = "KargoTakip";
-    Layout = "~/Views/Shared/AdminLayout.cshtml";
+    ViewBag.Title = "CariKargoTakip";
+    Layout = "~/Views/Shared/_CariLayout.cshtml";
     int count = 0;
 }
 
@@ -14,11 +14,10 @@
 </ol>
 <table class="table table-bordered" style="margin-top:20px;">
     <tr>
-        <td>Adımlar</td>
+        <th>Adımlar</th>
         <th>Açıklama</th>
         <th>Tarih</th>
-        @*<th>Güncelle</th>
-            <th>Detaylar</th>*@
+      
     </tr>
     @foreach (var item in Model)
     {
@@ -27,7 +26,7 @@
             <td>@count</td>
             <td>@item.Aciklama</td>
             <td>@item.TarihZaman</td>
-           
+
         </tr>
     }
 
