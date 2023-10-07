@@ -14,9 +14,22 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+
             var mail = (string)Session["CariMail"];
-            var degerler= context.Carilers.Where(x=>x.CarilerMail == mail).ToList();
+            var degerler = context.Mesajlars.Where(x => x.Alici == mail).ToList();
             ViewBag.m = mail;
+            var cariid = context.Carilers.Where(x => x.CarilerMail == mail).Select(y => y.Carilerid).FirstOrDefault();
+            var toplamSatis = context.SatisHarekets.Where(x => x.Carilerid == cariid).Count();
+            ViewBag.toplamSatis = toplamSatis;
+            var toplamTutar = context.SatisHarekets.Where(x => x.Carilerid == cariid).Sum(y => y.ToplamTutar);
+            ViewBag.toplamTutar = toplamTutar;
+            var toplamUrun = context.SatisHarekets.Where(x => x.Carilerid == cariid).Sum(y => y.Adet);
+            ViewBag.toplamUrun = toplamUrun;
+            var adsoyad = context.Carilers.Where(x => x.CarilerMail == mail).Select(y => y.CarilerAd + " " + y.CarilerSoyad).FirstOrDefault();
+            ViewBag.adsoyad = adsoyad;
+            var email = context.Carilers.Where(x => x.CarilerMail == mail).Select(y => y.CarilerMail).FirstOrDefault();
+            ViewBag.email = email;
+
             return View(degerler);
         }
         [HttpGet]
@@ -97,6 +110,32 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             var values = context.KargoTakips.Where(x => x.TakipKodu == id).ToList();
             ViewBag.takipkodu = id;
             return View(values);
+        }
+        public PartialViewResult Partial1()
+        {
+            var mail = (string)Session["CariMail"];
+            var id = context.Carilers.Where(x => x.CarilerMail == mail).Select(y => y.Carilerid).FirstOrDefault();
+
+            var cari = context.Carilers.Find(id);
+            return PartialView("Partial1", cari);
+        }
+        public PartialViewResult Duyuru()
+        {
+            var veriler = context.Mesajlars.Where(x => x.Gonderici == "admin").ToList();
+            return PartialView(veriler);
+        }
+        [HttpPost]
+        public ActionResult CariBilgiGuncelle(Cariler cariler)
+        {
+            var cari = context.Carilers.Find(cariler.Carilerid);
+            cari.CarilerAd=cariler.CarilerAd;
+            cari.CarilerSoyad=cariler.CarilerSoyad;
+            cari.CarilerMail=cariler.CarilerMail;
+            cari.CarilerSehir=cariler.CarilerSehir;
+            cari.Sifre=cariler.Sifre;
+
+            context.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

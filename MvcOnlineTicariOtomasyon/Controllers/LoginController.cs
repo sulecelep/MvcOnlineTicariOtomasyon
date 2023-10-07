@@ -12,16 +12,19 @@ namespace MvcOnlineTicariOtomasyon.Controllers
     {
         Context context =new Context();
         // GET: Login
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
         }
         [HttpGet]
+        [AllowAnonymous]
         public PartialViewResult Partial1()
         {
             return PartialView();
         }
         [HttpPost]
+        [AllowAnonymous]
         public PartialViewResult Partial1(Cariler cariler)
         {
             context.Carilers.Add(cariler);
@@ -29,11 +32,13 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             return PartialView();
         }
         [HttpGet]
+        [AllowAnonymous]
         public PartialViewResult Partial2()
         {
             return PartialView();
         }
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult Partial2(Cariler cariler)
         {
             var bilgiler= context.Carilers.FirstOrDefault(x=>x.CarilerMail== cariler.CarilerMail && x.Sifre==cariler.Sifre);
@@ -47,11 +52,13 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             return View();
         }
         [HttpGet]
+        [AllowAnonymous]
         public PartialViewResult AdminLogin()
         {
             return PartialView();
         }
         [HttpPost]
+        [AllowAnonymous]
         public ActionResult AdminLogin(Admin admin)
         {
             var bilgiler = context.Admins.FirstOrDefault(x => x.KullaniciAd == admin.KullaniciAd && x.Sifre == admin.Sifre);

@@ -16,7 +16,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         Context c = new Context();
         public ActionResult Index(int sayfa=1)
         {
-            var values= c.Kategoris.ToList().ToPagedList(sayfa,3);
+            var values= c.Kategoris.ToList().ToPagedList(sayfa,6);
             return View(values);
         }
         [HttpGet]
@@ -51,6 +51,27 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             value.KategoriAd = kategori.KategoriAd;
             c.SaveChanges();
             return RedirectToAction("Index");
+        }
+        public ActionResult CascadeDropdown()
+        {
+            Cascade cascade = new Cascade();
+            cascade.Kategoriler = new SelectList(c.Kategoris, "KategoriID", "KategoriAd");
+            cascade.Urunler = new SelectList(c.Uruns, "Urunid", "UrunAd");
+            return View(cascade);
+        }
+        [HttpPost]
+        public JsonResult UrunGetir(int p)
+        {
+            var urunlistesi = (from x in c.Uruns
+                               join y in c.Kategoris
+                               on x.Kategori.KategoriID equals y.KategoriID
+                               where x.Kategori.KategoriID == p
+                               select new
+                               {
+                                   Text=x.UrunAd,
+                                   Value= x.Urunid.ToString()
+                               }).ToList();
+            return Json(urunlistesi, JsonRequestBehavior.AllowGet);
         }
     }
 }
