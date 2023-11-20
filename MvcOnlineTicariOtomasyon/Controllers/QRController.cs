@@ -24,7 +24,7 @@ namespace MvcOnlineTicariOtomasyon.Controllers
             {
                 QRCodeGenerator koduret = new QRCodeGenerator();
                 QRCodeGenerator.QRCode karekod = koduret.CreateQrCode(kod, QRCodeGenerator.ECCLevel.Q);
-                using(Bitmap resim =karekod.GetGraphic(10))
+                using(Bitmap resim =karekod.GetGraphic(15))
                 {
                     resim.Save(ms,ImageFormat.Png);
                     ViewBag.karekodimage = "data:image/png;base64," + Convert.ToBase64String(ms.ToArray());

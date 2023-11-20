@@ -55,7 +55,36 @@
 <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
 
 <script>
-    $('#tbl1').dataTable({});
+    //$('#tbl1').dataTable({});
+
+ 
+    $('#tbl1').dataTable({
+        "language": {
+            "sEmptyTable": "Tabloda herhangi bir veri mevcut değil",
+            "sInfo": " _TOTAL_ kayıttan _START_ - _END_ arasındaki kayıtlar gösteriliyor",
+            "sInfoEmpty": "Gösterilecek kayıt yok",
+            "sInfoFiltered": "(_MAX_ kayıt içerisinden bulunan)",
+            "sInfoPostFix": "",
+            "sInfoThousands": ".",
+            "sLengthMenu": "Sayfada _MENU_ kayıt göster",
+            "sLoadingRecords": "Yükleniyor...",
+            "sProcessing": "İşleniyor...",
+            "sSearch": "Ara:",
+            "sZeroRecords": "Eşleşen kayıt bulunamadı",
+            "oPaginate": {
+                "sFirst": "İlk",
+                "sLast": "Son",
+                "sNext": "Sonraki",
+                "sPrevious": "Önceki"
+            },
+            "oAria": {
+                "sSortAscending": ": artan sütun sıralamasını etkinleştir",
+                "sSortDescending": ": azalan sütun sıralamasını etkinleştir"
+            }
+        },
+    });
+
+
 </script>
 
 

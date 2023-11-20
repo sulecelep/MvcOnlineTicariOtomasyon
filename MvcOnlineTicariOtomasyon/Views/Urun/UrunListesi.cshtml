@@ -4,10 +4,13 @@
 
 @{
 
-    Layout = null;
+        Layout = null;
 
-}
-
+    }
+@*@{
+    ViewBag.Title = "UrunListesi";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}*@
 <br />
 
 <!DOCTYPE html>
@@ -121,25 +124,40 @@
 
     <script>
 
-$(document).ready(function() {
+            $(document).ready(function () {
 
-    var table = $('#example').DataTable( {
+                var table = $('#example').DataTable({
 
-        lengthChange: false,
+                    lengthChange: false,
 
-        buttons: [ 'copy', 'excel', 'csv', 'pdf', 'colvis' ]
+                    buttons: ['copy', 'excel', 'csv', 'pdf', 'colvis'],
 
-    } );
+                    language: {
 
 
 
-    table.buttons().container()
+                        url: "//cdn.datatables.net/plug-ins/1.10.12/i18n/Turkish.json"
 
-        .appendTo( '#example_wrapper .col-md-6:eq(0)' );
 
-} );
 
-    </script>
+
+
+                    },
+                    dom: "Blfrtip"
+
+
+                });
+
+
+                
+                table.buttons().container()
+
+                    .appendTo('#example_wrapper .col-md-6:eq(0)');
+
+            });
+
+        </script>
+
 
 </body>
 

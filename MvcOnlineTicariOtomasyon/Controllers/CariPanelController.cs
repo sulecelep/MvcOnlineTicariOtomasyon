@@ -121,7 +121,8 @@ namespace MvcOnlineTicariOtomasyon.Controllers
         }
         public PartialViewResult Duyuru()
         {
-            var veriler = context.Mesajlars.Where(x => x.Gonderici == "admin").ToList();
+            var mail = (string)Session["CariMail"];
+            var veriler = context.Mesajlars.Where(x => x.Gonderici == mail).OrderByDescending(x=>x.Tarih).ToList();
             return PartialView(veriler);
         }
         [HttpPost]
